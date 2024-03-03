@@ -1,4 +1,4 @@
-import { cn } from "../../utils/tailwind";
+import { cn } from "../../../utils/tailwind";
 
 interface ContainerProps extends React.ComponentPropsWithoutRef<'div'> {
   type?: 'padding' | 'margin';

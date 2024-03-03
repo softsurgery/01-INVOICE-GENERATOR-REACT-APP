@@ -1,5 +1,5 @@
-import { Container } from "../common/Container";
-import { Label } from "../common/Label";
+import { Container } from "../common/ui/Container";
+import { Label } from "../common/ui/Label";
 
 export const Login = () => {
   return (
@@ -52,7 +52,7 @@ export const Login = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-secondary font-medium rounded-lg py-2.5 text-center"
+                className="w-full bg-primary font-medium rounded-lg py-2.5 text-center"
               >
                 Sign in
               </button>

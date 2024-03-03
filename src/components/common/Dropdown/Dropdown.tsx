@@ -47,7 +47,7 @@ export const Dropdown = ({
       className={cn(
         className,
         active ? "block" : "hidden",
-        "absolute top-16 z-10 w-48 rounded-md bg-gray-800 border-white-900 border-2 text-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        "absolute top-16 right-0 z-10 w-48 rounded-md bg-gray-800 border-white-900 border-2 text-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
       )}
       ref={menuRef}
     >

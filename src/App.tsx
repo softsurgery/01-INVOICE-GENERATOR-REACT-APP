@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login } from "./components/auth/Login";
 import "./style.css";
-import NavbarComponent from "./components/common/Navbar";
-import { Container } from "./components/common/Container";
+import { Navbar } from "./components/common/Navbar";
+import { Container } from "./components/common/ui/Container";
 
 function Home() {
   return (
     <div>
-      <NavbarComponent />
+      <Navbar />
       <Container>
         <h1 className="m-5 hover:bg-slate-200">Home Page</h1>
       </Container>
@@ -18,7 +18,7 @@ function Home() {
 function About() {
   return (
     <div>
-      <NavbarComponent />
+      <Navbar />
       <Container>
         <h1 className="m-5 hover:bg-slate-200">About Page</h1>
       </Container>
@@ -29,7 +29,7 @@ function About() {
 function Contact() {
   return (
     <div>
-      <NavbarComponent />
+      <Navbar />
       <Container>
         <h1 className="m-5 hover:bg-slate-200">Contact Page</h1>
       </Container>

@@ -3,8 +3,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { NavItem } from "./NavItem";
 import React from "react";
-import { Dropdown } from "./Dropdown";
-import { DropdownItemType } from "./Dropdown/Dropdown";
+import { Dropdown } from "../Dropdown";
+import { DropdownItemType } from "../Dropdown/Dropdown";
+import { cn } from "../../../utils/tailwind";
+import { useResize } from "../../../hooks/useResize";
 
 interface NavItem {
   title: string;
@@ -22,11 +24,14 @@ const DropdownItems: DropdownItemType[] = [
   { title: "Sign out", callback: () => {} },
 ];
 
-function NavbarComponent() {
+function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
   const [showPanal, setShowPanal] = React.useState(false);
+  const [showMobileNavItems, setShowMobileNavItems] = React.useState(false);
+
+  useResize(()=> {setShowMobileNavItems(false)});
 
   return (
     <nav className="bg-gray-800">
@@ -38,6 +43,9 @@ function NavbarComponent() {
               className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-gray focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray"
               aria-controls="mobile-menu"
               aria-expanded="false"
+              onClick={() => {
+                setShowMobileNavItems(!showMobileNavItems);
+              }}
             >
               <span className="absolute -inset-0.5"></span>
               <span className="sr-only">Open main menu</span>
@@ -92,7 +100,9 @@ function NavbarComponent() {
                     title={item.title}
                     path={item.path}
                     active={item.path == location.pathname}
-                    onClick={() => {item.path && navigate(item.path)}}
+                    onClick={() => {
+                      item.path && navigate(item.path);
+                    }}
                   />
                 ))}
               </div>
@@ -100,11 +110,11 @@ function NavbarComponent() {
           </div>
           <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="ml-3">
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col">
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-gray focus:ring-offset-2 focus:ring-offset-gray-800"
-                  onClick={() => setShowPanal(true)}
+                  onClick={() => setShowPanal(!showPanal)}
                 >
                   <img
                     className="rounded-full h-10 w-10 "
@@ -114,7 +124,7 @@ function NavbarComponent() {
                 </button>
 
                 <Dropdown
-                items={DropdownItems}
+                  items={DropdownItems}
                   active={showPanal}
                   callBack={() => {
                     setShowPanal(false);
@@ -125,8 +135,24 @@ function NavbarComponent() {
           </div>
         </div>
       </div>
+      <div className={cn(showMobileNavItems ? "sm:hidden" : "hidden")} id="mobile-menu">
+        <div className="space-y-1 px-2 pb-3 pt-2">
+          {NavbarItems.map((item) => (
+            <NavItem
+              className="block"
+              key={item.title}
+              title={item.title}
+              path={item.path}
+              active={item.path == location.pathname}
+              onClick={() => {
+                item.path && navigate(item.path);
+              }}
+            />
+          ))}
+        </div>
+      </div>
     </nav>
   );
 }
 
-export default NavbarComponent;
+export default Navbar;
