@@ -4,15 +4,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { NavItem } from "./NavItem";
 import React from "react";
 import { Dropdown } from "./Dropdown";
+import { DropdownItemType } from "./Dropdown/Dropdown";
 
 interface NavItem {
   title: string;
-  path: string;
+  path?: string;
 }
 
 const NavbarItems: NavItem[] = [
   { title: "New Invoice", path: "/new" },
   { title: "History", path: "/contact" },
+];
+
+const DropdownItems: DropdownItemType[] = [
+  { title: "Your Profile", callback: () => {} },
+  { title: "Settings", callback: () => {} },
+  { title: "Sign out", callback: () => {} },
 ];
 
 function NavbarComponent() {
@@ -85,7 +92,7 @@ function NavbarComponent() {
                     title={item.title}
                     path={item.path}
                     active={item.path == location.pathname}
-                    onClick={() => navigate(item.path)}
+                    onClick={() => {item.path && navigate(item.path)}}
                   />
                 ))}
               </div>
@@ -97,7 +104,7 @@ function NavbarComponent() {
                 <button
                   type="button"
                   className="rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-gray focus:ring-offset-2 focus:ring-offset-gray-800"
-                  onClick={() => setShowPanal(!showPanal)}
+                  onClick={() => setShowPanal(true)}
                 >
                   <img
                     className="rounded-full h-10 w-10 "
@@ -107,6 +114,7 @@ function NavbarComponent() {
                 </button>
 
                 <Dropdown
+                items={DropdownItems}
                   active={showPanal}
                   callBack={() => {
                     setShowPanal(false);
@@ -115,36 +123,6 @@ function NavbarComponent() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="sm:hidden" id="mobile-menu">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          <a
-            href="#"
-            className="bg-gray-900 text-gray block rounded-md px-3 py-2 text-base font-medium"
-            aria-current="page"
-          >
-            Dashboard
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-gray block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Team
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-gray block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Projects
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-gray block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Calendar
-          </a>
         </div>
       </div>
     </nav>
