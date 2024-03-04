@@ -1,18 +1,18 @@
-import { Container } from "../common/ui/Container";
-import { Label } from "../common/ui/Label";
+import { Container } from "../Common/ui/Container";
+import { Label } from "../Common/ui/Label";
 
 export const Login = () => {
   return (
     <Container>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
-        <div className="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-600">
+        <div className="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-200">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl text-center font-bold md:text-2xl text-current dark:text-white">
+            <h1 className="text-xl text-center font-bold md:text-2xl text-current text-white">
               Sign in to your account
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
               <div>
-                <Label className="text-sm font-medium" value="E-mail"/>
+              <Label className="text-sm font-medium" >E-mail</Label>
                 <input
                   type="email"
                   name="email"
@@ -21,7 +21,7 @@ export const Login = () => {
                 />
               </div>
               <div>
-              <Label className="text-sm font-medium" value="Password"/>
+              <Label className="text-sm font-medium" >Password</Label>
                 <input
                   type="password"
                   name="password"
@@ -40,12 +40,12 @@ export const Login = () => {
                     />
                   </div>
                   <div className="ml-3 text-sm">
-                    <label className="dark:text-white">Remember me</label>
+                    <label className="text-white">Remember me</label>
                   </div>
                 </div>
                 <a
                   href="#"
-                  className="dark:text-white font-medium hover:underline"
+                  className="text-white font-medium hover:underline"
                 >
                   Forgot password?
                 </a>
@@ -56,7 +56,7 @@ export const Login = () => {
               >
                 Sign in
               </button>
-              <p className="font-light dark:text-white">
+              <p className="font-light text-white">
                 Don&apos;t have an account yet?{" "}
                 <a href="#" className="font-medium hover:underline">
                   Sign up

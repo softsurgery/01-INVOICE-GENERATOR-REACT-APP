@@ -69,6 +69,11 @@
     --radius: 0.5rem;
   }
 }
+/* 
+.shadow {
+  @apply hover:shadow-2xl !important ;
+  @apply hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.8)] rounded-xl; 
+} */
 
 body {
     background-image: url('./assets/bg.png');

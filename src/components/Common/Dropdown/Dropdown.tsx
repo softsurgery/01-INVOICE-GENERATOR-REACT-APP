@@ -51,9 +51,16 @@ export const Dropdown = ({
       )}
       ref={menuRef}
     >
-      {items && items.map((item: DropdownItemType) => {
-        return <DropdownItem title={item.title} callBack={item.callback} />;
-      })}
+      {items &&
+        items.map((item: DropdownItemType, index) => {
+          return (
+            <DropdownItem
+              key={index}
+              title={item.title}
+              callBack={item.callback}
+            />
+          );
+        })}
     </div>
   );
 };
